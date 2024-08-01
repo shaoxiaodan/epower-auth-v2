@@ -1,0 +1,24 @@
+2024-08-01 16:15:51.757 [restartedMain] INFO  edu.nau.epower_auth.EpowerAuthApplication - Starting EpowerAuthApplication using Java 17.0.8.1 with PID 9220 (D:\mydev_workspaces\workspace_nau693\epower-auth-v2\target\classes started by Daniel X D SHAO in D:\mydev_workspaces\workspace_nau693\epower-auth-v2)
+2024-08-01 16:15:51.759 [restartedMain] INFO  edu.nau.epower_auth.EpowerAuthApplication - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 16:15:51.803 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-01 16:15:51.804 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-01 16:15:52.810 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-08-01 16:15:52.825 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-08-01 16:15:52.827 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-08-01 16:15:52.828 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-08-01 16:15:52.899 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-08-01 16:15:52.900 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1095 ms
+2024-08-01 16:15:53.588 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-08-01 16:15:53.607 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-08-01 16:15:53.636 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2024-08-01 16:15:53.647 [restartedMain] INFO  edu.nau.epower_auth.EpowerAuthApplication - Started EpowerAuthApplication in 2.408 seconds (process running for 3.251)
+2024-08-01 16:15:58.149 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-01 16:15:58.149 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-08-01 16:15:58.150 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-08-01 16:16:01.836 [http-nio-8080-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-08-01 16:16:02.079 [http-nio-8080-exec-3] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62560f92
+2024-08-01 16:16:02.085 [http-nio-8080-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-08-01 16:16:10.439 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-08-01 16:16:10.444 [RMI TCP Connection(2)-127.0.0.1] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-08-01 16:16:11.263 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-08-01 16:16:11.275 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

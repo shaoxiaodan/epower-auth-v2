@@ -2,6 +2,12 @@ package edu.nau.epower_auth.dao;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 资源路径类
@@ -11,6 +17,10 @@ import java.util.Date;
  * @author Xiaodan Shao(xs94@nau.edu)
  * @date 2024-07-06 10:22:20
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Url implements Serializable {
 
 	private int id;
@@ -26,64 +36,5 @@ public class Url implements Serializable {
 	private Date updateTime;
 
 	private boolean isEntrance;
-
-	public Url() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
-
-	public String getStaticPath() {
-		return staticPath;
-	}
-
-	public void setStaticPath(String staticPath) {
-		this.staticPath = staticPath;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public boolean isEntrance() {
-		return isEntrance;
-	}
-
-	public void setEntrance(boolean isEntrance) {
-		this.isEntrance = isEntrance;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 }
