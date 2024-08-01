@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 引用公共组件 -->
+
+<head th:include="~{system/common/component::myheader('菜单管理')}"></head>
+
+<body>
+
+	<!-- 顶部菜单组件 -->
+	<div th:insert="~{system/common/component::#mymenu}"></div>
+
+	<!-- 工具栏组件 -->
+	<div th:insert="~{system/common/component::mytoolbar('菜单', |${verifyreq}/add|)}"></div>
+
+	<!-- 数据列表 -->
+	<div>
+		<table class="table table-hover align-items-center">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">菜单名称</th>
+					<th scope="col">描述 / 说明</th>
+					<th scope="col">创建日期</th>
+					<th scope="col">更新日期</th>
+					<th scope="col">菜单配置</th>
+					<th scope="col">菜单操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="menu:${menus}">
+					<th scope="row" th:text="${menu.id}">ID</th>
+					<td th:text="${menu.name}">name</td>
+					<td th:text="${menu.description}">description</td>
+					<td th:text="${#dates.format(menu.createTime, 'yyyy-MM-dd HH:mm')}">createTime</td>
+					<td th:text="${#dates.format(menu.updateTime, 'yyyy-MM-dd HH:mm')}">updateTime</td>
+					<td>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/auth|">
+								<a class="btn btn-outline-primary" th:href="@{auth(mid=${menu.id})}">URL配置</a>
+							</span>
+						</span>
+					</td>
+					<td>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/update|">
+								<a class="btn btn-outline-primary" th:href="@{update(mid=${menu.id})}">更新</a>
+							</span>
+						</span>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/remove|">
+								<a class="btn btn-outline-primary" th:href="@{remove(mid=${menu.id})}" onclick="return delConfirm();">删除</a>
+							</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="7">
+						<!-- 分页 -->
+						<div th:insert="~{system/common/component::#mypagination}"></div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<!-- 底部Footer组件 -->
+	<div th:insert="~{system/common/component::#myfooter}"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="myheader(title)">
+	<meta charset="UTF-8">
+	<title>URL配置</title>
+
+	<!-- for Anchor -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,600,800" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/all.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+	<link rel="stylesheet" th:href="@{/css/aos.css}">
+
+	<!-- bootstrap公共库 -->
+	<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+	<!-- ePower的公共脚本 -->
+	<script th:src="@{/js/epower.js}" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		function moveUrlOpts(fromSelectId, toSelectId) {
+			var fromObj = document.getElementById(fromSelectId);
+			var toObj = document.getElementById(toSelectId);
+
+			for (var i = fromObj.length - 1; i >= 0; i--) {
+				var op = fromObj.options[i];
+				if (op.selected) {
+					toObj.options.add(new Option(op.text, op.value));
+					fromObj.remove(i);
+				}
+			}
+		}
+
+		function getUrlOptIds(toSelectId) {
+			var toObj = document.getElementById(toSelectId);
+			var newUrlsObj = document.getElementById("newurls");
+			var newUrlsArry = [];
+
+			for (var i = 0; i < toObj.length; i++) {
+				newUrlsArry.push(toObj[i].value);
+			}
+
+			newUrlsObj.value = newUrlsArry.toString();
+
+			//alert(newUrlsObj.value);
+			if (newUrlsObj.value != null) {
+				return true;
+			} else {
+				alert("请确认配置URL。");
+				return false;
+			}
+		}
+
+		function initOpts(selectId) {
+			var optsObj = document.getElementById(selectId);
+			optsObj.options = 0;
+		}
+
+		initOpts('fromselect');
+		initOpts('toselect');
+	</script>
+</head>
+
+<body>
+
+	<!-- 顶部菜单组件 -->
+	<div th:insert="~{system/common/component::#mymenu}"></div>
+
+	<div align="center">
+		<h1>URL配置页面</h1>
+	</div>
+
+	<div>
+		<h5 class="mb-4 text-left">当前配置菜单：[[${menu.name}]]</h5>
+	</div>
+
+	<div>
+		<div class="d-md align-items-center justify-content-center">
+			<form class="p-5" th:action="@{auth(mid=${menu.id})}" method="post"
+				onsubmit="return getUrlOptIds('toselect');">
+				<input type="hidden" id="newurls" name="newurls" value="">
+
+				<table class="table align-items-center text-center" border="0">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">可供配置的URL</th>
+							<th scope="col">配置操作</th>
+							<th scope="col">已获配置的URL</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="form-group">
+									<select multiple="multiple" id="fromselect" name="fromselect"
+										style="width: 400px; height: 300px;">
+										<option th:each="lefturl:${lefturls}" th:value="${lefturl.id}">
+											[[${lefturl.path}]]</option>
+									</select>
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<!-- <input type="button" class="btn btn-primary btn-lg w-100" value="添加已选菜单" onclick="moveUrlOpts('fromselect', 'toselect')"> -->
+									<a class="btn btn-outline-primary"
+										href="javascript:moveUrlOpts('fromselect', 'toselect');">添加可供配置URL &gt;&gt;</a>
+								</div>
+								<div class="form-group">
+									<!-- <input type="button" class="btn btn-primary btn-lg w-100" value="移除已选菜单" onclick="moveUrlOpts('toselect', 'fromselect')"> -->
+									<a class="btn btn-outline-primary"
+										href="javascript:moveUrlOpts('toselect', 'fromselect');">&lt;&lt; 移除已获配置URL</a>
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<select multiple="multiple" id="toselect" name="toselect"
+										style="width: 400px; height: 300px;">
+										<option th:each="righturl:${righturls}" th:value="${righturl.id}">
+											[[${righturl.path}]]</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="text-left">
+						<tr>
+							<td colspan="3">
+								<a class="btn btn-outline-primary" th:href="@{list}"> &lt;&lt; 返回</a>
+
+								<span th:each="url:${verifyurls}">
+									<span th:if="${url.path} == |${verifyreq}/auth|">
+										<button type="submit" class="btn btn-primary">保存URL配置</button>
+									</span>
+								</span>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</form>
+		</div>
+	</div>
+
+	<!-- 底部Footer组件 -->
+	<div th:insert="~{system/common/component::#myfooter}"></div>
+
+</body>
+
+</html>

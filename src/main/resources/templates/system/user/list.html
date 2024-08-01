@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 头部公共组件 -->
+
+<head th:include="~{system/common/component::myheader('用户管理')}"></head>
+
+
+<body>
+
+	<!-- 顶部菜单组件 -->
+	<div th:insert="~{system/common/component::#mymenu}"></div>
+
+	<!-- 工具栏组件 -->
+	<div th:insert="~{system/common/component::mytoolbar('用户', |${verifyreq}/add|)}"></div>
+
+	<!-- 数据列表 -->
+	<div>
+		<table class="table table-hover align-items-center">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">用户名称</th>
+					<th scope="col">描述 / 说明</th>
+					<th scope="col">创建时间</th>
+					<th scope="col">更新时间</th>
+					<th scope="col">用户授权</th>
+					<th scope="col">用户操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user:${users}">
+					<th scope="row">[[${user.id}]]</th>
+					<td>[[${user.username}]]</td>
+					<td>[[${user.description}]]</td>
+					<td>[[${#dates.format(user.createTime, 'yyyy-MM-dd HH:mm')}]]</td>
+					<td>[[${#dates.format(user.updateTime, 'yyyy-MM-dd HH:mm')}]]</td>
+					<td>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/auth|">
+								<a class="btn btn-outline-primary" th:href="@{auth(uid=${user.id})}">用户授权</a>
+							</span>
+						</span>
+					</td>
+					<td>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/update|">
+								<a class="btn btn-outline-primary" th:href="@{update(uid=${user.id})}">更新</a>
+							</span>
+						</span>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/remove|">
+								<a class="btn btn-outline-primary" th:href="@{remove(uid=${user.id})}" onclick="return delConfirm();">删除</a>
+							</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="7">
+						<!-- 分页 -->
+						<div th:insert="~{system/common/component::#mypagination}"></div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<!-- Footer组件 -->
+	<div th:insert="~{system/common/component::#myfooter}"></div>
+
+</body>
+
+</html>

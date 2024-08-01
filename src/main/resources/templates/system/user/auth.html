@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 头部公共组件 -->
+
+<head th:include="~{system/common/component::myheader('用户授权')}"></head>
+
+<body>
+
+	<!-- 顶部菜单组件 -->
+	<div th:insert="~{system/common/component::#mymenu}"></div>
+
+	<div align="center">
+		<h1>用户授权页面</h1>
+	</div>
+
+	<!-- 角色列表 -->
+	<div>
+		<h5 class="mb-4 text-left">当前授权用户：[[${user.username}]]</h5>
+	</div>
+	<div>
+		<h5 class="mb-4 text-left">
+			<span th:each="url:${verifyurls}">
+				<span th:if="${url.path} == |${verifyreq}/auth|">
+					<form th:object="${addrole}" th:action="@{auth}" method="post"
+						onsubmit="return checkOptValue('roleselector', '角色');">
+						<input type="hidden" name="userId" th:value="*{userId}">
+						<!-- 添加角色列表 -->
+						<select class="selectpicker" id="roleselector" name="roleselector" th:field="*{roleId}">
+							<option value="0">---- 请选择授权角色 ----</option>
+							<option th:each="role:${roles}" th:value="${role.id}">[[${role.name}]]</option>
+						</select>
+						<button type="submit" class="btn btn-primary">添加授权</button>
+					</form>
+				</span>
+			</span>
+		</h5>
+	</div>
+
+	<!-- 数据列表 -->
+	<div>
+		<table class="table table-hover align-items-center">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">授权名称</th>
+					<th scope="col">授权说明</th>
+					<th scope="col">授权日期</th>
+					<th scope="col">授权操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="userrole:${userroles}">
+					<td th:text="${userrole.name}"></td>
+					<td th:text="${userrole.description}"></td>
+					<td th:text="${userrole.createTime}"></td>
+					<td>
+						<span th:each="url:${verifyurls}">
+							<span th:if="${url.path} == |${verifyreq}/removeauth|">
+								<a class="btn btn-outline-primary"
+									th:href="@{removeauth(uid=${user.id}, rid=${userrole.id})}">移除授权角色</a>
+							</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						<a class="btn btn-outline-primary" th:href="@{list}">返回用户列表</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<!-- 底部Footer组件 -->
+	<div th:insert="~{system/common/component::#myfooter}"></div>
+
+</body>
+
+</html>

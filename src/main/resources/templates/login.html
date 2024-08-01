@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 头部公共组件 -->
+
+<head th:include="~{system/common/component::myheader('用户登录')}"></head>
+
+<body>
+
+	<!-- 登录主体 -->
+	<div>
+		<div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+			<form class="border rounded p-5" id="loginform" name="loginform" th:object="${user}" th:action="@{login}"
+				method="post">
+				<h3 class="mb-4 text-center">ePower授权系统</h3>
+				<!-- username -->
+				<div class="form-group">
+					<input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"
+						required="" th:value="*{username}" />
+				</div>
+				<!-- password -->
+				<div class="form-group">
+					<input type="password" class="form-control" id="password" name="password" placeholder="请输入登录密码"
+						required="" th:value="*{password}" />
+				</div>
+				<!-- 提交btn -->
+				<button type="submit" class="btn btn-success btn-round btn-block shadow-sm">登录</button>
+				<small class="d-block mt-4 text-center" th:text="${msg}">[[${msg}]]</small>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>
