@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import edu.nau.epower_auth.common.JwtUtils;
+import edu.nau.epower_auth.common.ThreadLocalUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -30,10 +31,17 @@ public class AuthTokenInterceptor implements HandlerInterceptor {
 		// 验证令牌token
 		try {
 			Map<String, Object> claims = JwtUtils.parseToken(token);
+
+			// 将业务数据存储到ThreadLoca中
+			ThreadLocalUtils.set(claims);
+
+			// 放行
 			return true;
 		} catch (Exception e) {
 			// 设置状态码401
 			response.setStatus(401);
+
+			// 不放行
 			return false;
 		}
 
