@@ -47,4 +47,11 @@ public class AuthTokenInterceptor implements HandlerInterceptor {
 
 	}
 
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		// 清空ThreadLocal中的数据，防止内存泄露
+		ThreadLocalUtils.remove();
+	}
+
 }
