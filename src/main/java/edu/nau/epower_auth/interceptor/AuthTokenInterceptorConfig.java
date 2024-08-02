@@ -22,12 +22,15 @@ public class AuthTokenInterceptorConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
-		registry.addInterceptor(authTokenInterceptor).addPathPatterns("/index").addPathPatterns("/user/**")
-				.addPathPatterns("/role/**").addPathPatterns("/menu/**").addPathPatterns("/url/**")
-				.excludePathPatterns("/login", "/rolechange", "/logout", "/error") // 放行login, logout
-//			.excludePathPatterns("/index.html", "/login.html") // 放行index.html, login.html
-				.excludePathPatterns("/css/**", "/js/**", "/pic/**"); // 放行static下的css, js, pic等静态资源文件
-
+		registry.addInterceptor(authTokenInterceptor)
+//		.addPathPatterns("/index")
+//		.addPathPatterns("/user/**")
+//		.addPathPatterns("/role/**")
+//		.addPathPatterns("/menu/**")
+//		.addPathPatterns("/url/**")
+		.excludePathPatterns("/login", "/rolechange", "/logout", "/error") // 放行login, logout
+//		.excludePathPatterns("/index.html", "/login.html") // 放行index.html, login.html
+		.excludePathPatterns("/css/**", "/js/**", "/pic/**"); // 放行static下的css, js, pic等静态资源文件
 	}
 
 }
