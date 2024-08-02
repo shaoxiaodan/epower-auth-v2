@@ -36,3 +36,4 @@ src/main/java/edu/nau/epower_auth/controller/TestController.java
 src/main/resources/templates/testurl.html
 src/main/java/edu/nau/epower_auth/controller/TestController.java
 src/main/java/edu/nau/epower_auth/controller/TestController.java
+logs/infolog/ePower-v2-info.log
