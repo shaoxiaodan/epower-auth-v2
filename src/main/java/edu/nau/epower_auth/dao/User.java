@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +29,7 @@ public class User implements Serializable {
 
 	private String username;
 
+	@JsonIgnore // 忽略密码字段的返回
 	private String password;
 
 	private Date createTime;
