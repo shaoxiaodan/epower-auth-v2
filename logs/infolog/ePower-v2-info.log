@@ -22,3 +22,12 @@
 2024-08-01 16:16:10.444 [RMI TCP Connection(2)-127.0.0.1] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
 2024-08-01 16:16:11.263 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-08-01 16:16:11.275 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-08-01 19:21:36.447 [main] INFO  edu.nau.epower_auth.common.JwtTest - Starting JwtTest using Java 17.0.8.1 with PID 19020 (started by Daniel X D SHAO in D:\mydev_workspaces\workspace_nau693\epower-auth-v2)
+2024-08-01 19:21:36.449 [main] INFO  edu.nau.epower_auth.common.JwtTest - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 19:21:38.354 [main] INFO  edu.nau.epower_auth.common.JwtTest - Started JwtTest in 2.374 seconds (process running for 3.556)
+2024-08-01 19:22:13.449 [main] INFO  edu.nau.epower_auth.common.JwtTest - Starting JwtTest using Java 17.0.8.1 with PID 16652 (started by Daniel X D SHAO in D:\mydev_workspaces\workspace_nau693\epower-auth-v2)
+2024-08-01 19:22:13.451 [main] INFO  edu.nau.epower_auth.common.JwtTest - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 19:22:15.211 [main] INFO  edu.nau.epower_auth.common.JwtTest - Started JwtTest in 2.181 seconds (process running for 3.462)
+2024-08-01 19:29:35.937 [main] INFO  edu.nau.epower_auth.common.JwtTest - Starting JwtTest using Java 17.0.8.1 with PID 14664 (started by Daniel X D SHAO in D:\mydev_workspaces\workspace_nau693\epower-auth-v2)
+2024-08-01 19:29:35.939 [main] INFO  edu.nau.epower_auth.common.JwtTest - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 19:29:37.692 [main] INFO  edu.nau.epower_auth.common.JwtTest - Started JwtTest in 2.204 seconds (process running for 3.38)
